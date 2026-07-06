@@ -1,4 +1,9 @@
 // ======================================
+// Edit Mode
+// ======================================
+
+let editingId = null;
+// ======================================
 // Battle Data Template
 // ======================================
 
@@ -212,7 +217,7 @@ async function saveBattle(){
 
     const battle={
 
-        id:Utils.createId(),
+        id:editingId ?? Utils.createId(),
 
         date:document.getElementById("battleDate").value,
 
@@ -256,12 +261,22 @@ async function saveBattle(){
 
     };
 
+    if(editingId){
+
+    await Storage.updateBattle(battle);
+
+    UI.showToast("戦績を更新しました");
+
+}else{
+
     await Storage.saveBattle(battle);
 
-    UI.showToast("戦績を保存しました！");
+    UI.showToast("戦績を保存しました");
 
+}
     document.getElementById("battleForm").reset();
 
+    editingId=null;
 }
 // ======================================
 // Result
@@ -321,3 +336,68 @@ async e=>{
 }
 
 );
+// ======================================
+// Load Battle
+// ======================================
+
+async function loadBattle(id){
+
+    const battles = await Storage.getBattles();
+
+    const battle = battles.find(
+
+        b=>b.id===id
+
+    );
+
+    if(!battle){
+
+        return;
+
+    }
+
+    editingId=id;
+
+    battleDate.value=battle.date;
+
+    battleTime.value=battle.time;
+
+    battleMode.value=battle.mode;
+
+    battleRule.value=battle.rule;
+
+    battleStage.value=battle.stage;
+
+    battleWeapon.value=battle.weapon;
+
+    battleSub.value=battle.sub;
+
+    battleSpecial.value=battle.special;
+
+    battleKill.value=battle.kill;
+
+    battleAssist.value=battle.assist;
+
+    battleDeath.value=battle.death;
+
+    battleSpecialCount.value=battle.specialCount;
+
+    battlePaint.value=battle.paint;
+
+    battleXP.value=battle.xp;
+
+    battleRank.value=battle.rank;
+
+    battleKnockout.value=String(battle.knockout);
+
+    battleMemo.value=battle.memo;
+
+    battleFavorite.checked=battle.favorite;
+
+    updateWeapon();
+
+    updateStage();
+
+    updateKD();
+
+}
