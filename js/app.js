@@ -4,6 +4,8 @@
 
 window.addEventListener("load",()=>{
 
+　　　await Storage.openDatabase();
+    
     const loading = document.getElementById("loadingScreen");
 
     setTimeout(()=>{
