@@ -691,6 +691,13 @@ async function loadBattle(id){
     updateKD();
 
 }
+window.scrollTo({
+
+    top:0,
+
+    behavior:"smooth"
+
+});
 // ======================================
 // History Filter
 // ======================================
