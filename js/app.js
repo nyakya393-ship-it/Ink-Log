@@ -29,3 +29,9 @@ window.addEventListener("load",()=>{
     UI.showToast("InkLogへようこそ！");
 
 });
+
+if("serviceWorker" in navigator){
+
+    navigator.serviceWorker.register("sw.js");
+
+}
