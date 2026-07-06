@@ -26,4 +26,6 @@ window.addEventListener("load",()=>{
 
     showPage("home");
 
+    UI.showToast("InkLogへようこそ！");
+
 });
