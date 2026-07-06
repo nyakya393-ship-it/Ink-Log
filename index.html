@@ -688,6 +688,396 @@ BATTLE
 
 </div>
 
+<!-- =========================
+戦績データ
+========================= -->
+
+<div class="recordCard">
+
+    <h3>
+
+        戦績
+
+    </h3>
+
+    <div class="formGrid four">
+
+        <div class="inputGroup">
+
+            <label>キル</label>
+
+            <input
+                type="number"
+                id="battleKill"
+                min="0"
+                value="0">
+
+        </div>
+
+        <div class="inputGroup">
+
+            <label>アシスト</label>
+
+            <input
+                type="number"
+                id="battleAssist"
+                min="0"
+                value="0">
+
+        </div>
+
+        <div class="inputGroup">
+
+            <label>デス</label>
+
+            <input
+                type="number"
+                id="battleDeath"
+                min="0"
+                value="0">
+
+        </div>
+
+        <div class="inputGroup">
+
+            <label>SP回数</label>
+
+            <input
+                type="number"
+                id="battleSpecialCount"
+                min="0"
+                value="0">
+
+        </div>
+
+    </div>
+
+    <div class="formGrid three">
+
+        <div class="inputGroup">
+
+            <label>塗りポイント</label>
+
+            <input
+                type="number"
+                id="battlePaint"
+                min="0"
+                placeholder="1200">
+
+        </div>
+
+        <div class="inputGroup">
+
+            <label>XP</label>
+
+            <input
+                type="number"
+                id="battleXP"
+                step="0.1"
+                placeholder="2500.0">
+
+        </div>
+
+        <div class="inputGroup">
+
+            <label>ウデマエ</label>
+
+            <select id="battleRank">
+
+                <option>S+50</option>
+                <option>S+10</option>
+                <option>S+</option>
+                <option>S</option>
+                <option>A+</option>
+                <option>A</option>
+                <option>B+</option>
+                <option>B</option>
+                <option>C+</option>
+                <option>C</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+    <div class="formGrid two">
+
+        <div class="inputGroup">
+
+            <label>ノックアウト</label>
+
+            <select id="battleKnockout">
+
+                <option value="false">
+
+                    なし
+
+                </option>
+
+                <option value="true">
+
+                    ノックアウト
+
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="inputGroup">
+
+            <label>K/D</label>
+
+            <input
+                type="text"
+                id="battleKD"
+                value="0.00"
+                readonly>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+表彰・ギア
+========================= -->
+
+<div class="recordCard">
+
+    <h3>
+
+        表彰・ギア
+
+    </h3>
+
+    <div class="formGrid three">
+
+        <div class="inputGroup">
+
+            <label>
+
+                表彰①
+
+            </label>
+
+            <select id="battleMedal1">
+
+                <option>なし</option>
+
+                <option>ゴールド</option>
+
+                <option>シルバー</option>
+
+            </select>
+
+        </div>
+
+        <div class="inputGroup">
+
+            <label>
+
+                表彰②
+
+            </label>
+
+            <select id="battleMedal2">
+
+                <option>なし</option>
+
+                <option>ゴールド</option>
+
+                <option>シルバー</option>
+
+            </select>
+
+        </div>
+
+        <div class="inputGroup">
+
+            <label>
+
+                表彰③
+
+            </label>
+
+            <select id="battleMedal3">
+
+                <option>なし</option>
+
+                <option>ゴールド</option>
+
+                <option>シルバー</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+    <div class="formGrid three">
+
+        <div class="inputGroup">
+
+            <label>
+
+                頭ギア
+
+            </label>
+
+            <select id="battleHeadGear">
+
+            </select>
+
+        </div>
+
+        <div class="inputGroup">
+
+            <label>
+
+                フク
+
+            </label>
+
+            <select id="battleClothesGear">
+
+            </select>
+
+        </div>
+
+        <div class="inputGroup">
+
+            <label>
+
+                クツ
+
+            </label>
+
+            <select id="battleShoesGear">
+
+            </select>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+XP・シーズン
+========================= -->
+
+<div class="recordCard">
+
+    <h3>
+
+        ランク情報
+
+    </h3>
+
+    <div class="formGrid three">
+
+        <div class="inputGroup">
+
+            <label>
+
+                シーズン
+
+            </label>
+
+            <input
+                type="text"
+                id="battleSeason"
+                placeholder="2026夏 Fresh Season">
+
+        </div>
+
+        <div class="inputGroup">
+
+            <label>
+
+                パワー変動
+
+            </label>
+
+            <input
+                type="number"
+                id="battlePowerChange"
+                step="0.1"
+                placeholder="+25.6">
+
+        </div>
+
+        <div class="inputGroup">
+
+            <label>
+
+                連勝数
+
+            </label>
+
+            <input
+                type="number"
+                id="battleWinStreak"
+                min="0"
+                value="0">
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+画像
+========================= -->
+
+<div class="recordCard">
+
+    <h3>
+
+        リザルト画像
+
+    </h3>
+
+    <input
+
+        type="file"
+
+        id="battleImages"
+
+        accept="image/*"
+
+        multiple>
+
+    <div id="imagePreviewList"></div>
+
+</div>
+
+<!-- =========================
+詳細メモ
+========================= -->
+
+<div class="recordCard">
+
+    <h3>
+
+        詳細メモ
+
+    </h3>
+
+    <textarea
+
+        id="battleDetailMemo"
+
+        rows="8"
+
+        placeholder="反省・味方構成・敵編成・立ち回りなど自由に記録"></textarea>
+
+</div>
+            
 </form>
 
 </div>
