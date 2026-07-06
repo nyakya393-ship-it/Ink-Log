@@ -279,6 +279,171 @@ async function saveBattle(){
     editingId=null;
 }
 // ======================================
+// Delete Battle
+// ======================================
+
+async function deleteBattle(id){
+
+    const ok=await UI.confirmDialog(
+
+        "この戦績を削除しますか？"
+
+    );
+
+    if(!ok){
+
+        return;
+
+    }
+
+    await Storage.deleteBattle(id);
+
+    UI.showToast(
+
+        "戦績を削除しました"
+
+    );
+
+    renderBattleList();
+
+}
+// ======================================
+// Favorite
+// ======================================
+
+async function toggleFavorite(id){
+
+    const battles=
+
+        await Storage.getBattles();
+
+    const battle=
+
+        battles.find(
+
+            b=>b.id===id
+
+        );
+
+    if(!battle){
+
+        return;
+
+    }
+
+    battle.favorite=
+
+        !battle.favorite;
+
+    await Storage.updateBattle(
+
+        battle
+
+    );
+
+    renderBattleList();
+
+}
+// ======================================
+// Battle List
+// ======================================
+
+async function renderBattleList(){
+
+    const list=
+
+        document.getElementById(
+
+            "battleList"
+
+        );
+
+    if(!list){
+
+        return;
+
+    }
+
+    list.innerHTML="";
+
+    const battles=
+
+        await Storage.getBattles();
+
+    battles.reverse().forEach(
+
+        battle=>{
+
+            const card=
+
+                document.createElement("div");
+
+            card.className=
+
+                "battleCard";
+
+            card.innerHTML=`
+
+                <h3>
+
+                    ${battle.weapon}
+
+                </h3>
+
+                <p>
+
+                    ${battle.stage}
+
+                </p>
+
+                <p>
+
+                    ${battle.result}
+
+                </p>
+
+                <div class="battleButtons">
+
+                    <button
+
+                        onclick="loadBattle('${battle.id}')">
+
+                        編集
+
+                    </button>
+
+                    <button
+
+                        onclick="toggleFavorite('${battle.id}')">
+
+                        ⭐
+
+                    </button>
+
+                    <button
+
+                        onclick="deleteBattle('${battle.id}')">
+
+                        削除
+
+                    </button>
+
+                </div>
+
+            `;
+
+            list.appendChild(
+
+                card
+
+            );
+
+        }
+
+    );
+
+}
+// ======================================
 // Result
 // ======================================
 
