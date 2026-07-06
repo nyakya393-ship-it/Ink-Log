@@ -649,3 +649,80 @@ async function loadBattle(id){
     updateKD();
 
 }
+// ======================================
+// History Filter
+// ======================================
+
+function getFilteredBattles(list){
+
+    const keyword=
+
+        historySearch.value
+
+        .toLowerCase();
+
+    const filter=
+
+        historyFilter.value;
+
+    const sort=
+
+        historySort.value;
+
+    let battles=[...list];
+
+    if(keyword){
+
+        battles=battles.filter(
+
+            b=>
+
+            b.weapon.toLowerCase().includes(keyword)
+
+            ||
+
+            b.stage.toLowerCase().includes(keyword)
+
+        );
+
+    }
+
+    if(filter==="WIN"){
+
+        battles=battles.filter(
+
+            b=>b.result==="WIN"
+
+        );
+
+    }
+
+    if(filter==="LOSE"){
+
+        battles=battles.filter(
+
+            b=>b.result==="LOSE"
+
+        );
+
+    }
+
+    if(filter==="favorite"){
+
+        battles=battles.filter(
+
+            b=>b.favorite
+
+        );
+
+    }
+
+    if(sort==="new"){
+
+        battles.reverse();
+
+    }
+
+    return battles;
+
+}
